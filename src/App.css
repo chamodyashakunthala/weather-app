@@ -1,3 +1,4 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500&display=swap');
 
 * {
@@ -24,6 +25,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: background 1s ease;
+    padding-top: 60px;
 }
 
 .theme-sunny {
@@ -54,7 +56,7 @@ body {
     background: linear-gradient(180deg, #E0F2FE 0%, #F8FAFC 100%);
 }
 
-/* The animated weather layer sits behind the card, but covers the whole screen */
+/* Animated weather layer, covers the whole screen behind the card */
 .weather-bg {
     position: fixed;
     inset: 0;
@@ -63,7 +65,7 @@ body {
     pointer-events: none;
 }
 
-/* The actual content (search + card), centered on top of the background */
+/* Centered content column on top of the background */
 .app {
     position: relative;
     z-index: 1;
@@ -71,93 +73,6 @@ body {
     width: 100%;
     padding: 24px;
     text-align: center;
-}
-
-.app h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 26px;
-    color: #1E293B;
-    margin-bottom: 24px;
-}
-
-/* Search bar */
-.search-bar {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 28px;
-}
-
-.search-bar input {
-    flex: 1;
-    padding: 12px 14px;
-    border: 1px solid #CBD5E1;
-    border-radius: 8px;
-    font-size: 14.5px;
-    font-family: 'Inter', sans-serif;
-}
-
-.search-bar input:focus {
-    outline: none;
-    border-color: #0EA5E9;
-}
-
-.search-bar button {
-    background-color: #0EA5E9;
-    color: white;
-    border: none;
-    padding: 0 20px;
-    border-radius: 8px;
-    font-size: 14.5px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.search-bar button:hover {
-    background-color: #0284C7;
-}
-
-.status-text {
-    color: #64748B;
-    font-size: 14.5px;
-    margin-top: 20px;
-}
-
-.status-text.error {
-    color: #DC2626;
-}
-
-/* Weather card */
-.weather-card {
-    background-color: #FFFFFF;
-    border-radius: 16px;
-    padding: 32px 24px;
-    box-shadow: 0 8px 24px rgba(30, 41, 59, 0.08);
-}
-
-.city-name {
-    font-size: 15px;
-    color: #64748B;
-    font-weight: 500;
-    margin-bottom: 8px;
-}
-
-.weather-icon {
-    font-size: 48px;
-    margin-bottom: 4px;
-}
-
-.temperature {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 42px;
-    font-weight: 700;
-    color: #1E293B;
-}
-
-.weather-label {
-    font-size: 14.5px;
-    color: #64748B;
-    margin-top: 4px;
 }
 
 /* Fade-in for the real weather card */
@@ -285,4 +200,26 @@ body {
     97% { opacity: 0.4; }
     98% { opacity: 0; }
     99% { opacity: 0.25; }
+}
+
+.sky-text {
+    background: linear-gradient(
+        90deg,
+        #FBBF24 0%,
+        #38BDF8 25%,
+        #94A3B8 50%,
+        #E0F2FE 75%,
+        #FBBF24 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: skyShift 6s ease-in-out infinite;
+}
+
+@keyframes skyShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
